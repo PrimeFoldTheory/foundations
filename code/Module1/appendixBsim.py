@@ -27,8 +27,29 @@ import random
 from dataclasses import dataclass, asdict
 from collections import deque
 from typing import List, Tuple, Dict, Optional
+import subprocess #----------------------
+import socket     #####for provenance key
+import uuid       #----------------------
 
 import numpy as np
+
+#---------------------------
+# provenance key
+#---------------------------
+def get_git_info():
+    try:
+        commit = subprocess.check_output(
+            ["git", "rev-parse", "--short", "HEAD"],
+            stderr=subprocess.DEVNULL
+        ).decode().strip()
+        dirty = subprocess.call(
+            ["git", "diff", "--quiet"],
+            stderr=subprocess.DEVNULL
+        ) != 0
+        return commit, dirty
+    except Exception:
+        return "nogit", False
+
 
 
 # -----------------------------
@@ -175,6 +196,16 @@ def run_fold_soc_1d(cfg: FoldSOCConfig) -> Tuple[np.ndarray, float, Dict[str, fl
             avalanche_sizes.append(size)
             if size > 0:
                 events += 1
+        # ---- progress heartbeat ----
+        if (t % 5000) == 0 and t > 0:
+            done = 100.0 * t / (cfg.steps + cfg.warmup)
+            rate = t / (time.time() - t0)
+            print(
+                f"[N={cfg.N}] {done:5.1f}%  t={t:,}/{cfg.steps+cfg.warmup:,}  "
+                f"events={events:,}  topples={total_topples:,}  rate={rate:,.0f} steps/s",
+                flush=True
+            )
+        
 
     dt = time.time() - t0
     sizes = np.asarray(avalanche_sizes, dtype=int)
@@ -251,10 +282,23 @@ def write_run_csv(cfg: FoldSOCConfig, sizes: np.ndarray, sink: float, summary: D
     fname = f"{cfg.tag}_N{cfg.N}_a{cfg.drive_amount}_k{cfg.kappa}_j{cfg.kappa_jitter}_seed{cfg.seed}_{stamp}.csv"
     fpath = os.path.join(cfg.out_dir, fname)
 
+    # -------- provenance key (repo fingerprint) --------
+    run_id = stamp + "_" + uuid.uuid4().hex[:8]
+    git_commit, git_dirty = get_git_info()
+    host = socket.gethostname()
+    # ---------------------------------------------------
+    
     with open(fpath, "w", newline="") as f:
         w = csv.writer(f)
         # header metadata
         w.writerow(["# config"])
+
+        # provenance key lines (go right under "# config")
+        w.writerow(["# run_id", run_id])
+        w.writerow(["# git_commit", git_commit])
+        w.writerow(["# git_dirty", git_dirty])
+        w.writerow(["# host", host])
+        
         for k, v in asdict(cfg).items():
             w.writerow([f"# {k}", v])
         w.writerow(["# summary"])
