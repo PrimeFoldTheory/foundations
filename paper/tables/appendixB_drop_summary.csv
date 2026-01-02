@@ -1,0 +1,4 @@
+mode,N,events,event_fraction,max_avalanche,mean_avalanche_nonzero,total_topples
+drop,64,58347.0,0.292,3165.0,245.7,15023337.0
+drop,128,61011.0,0.305,15076.0,915.0,58346657.0
+drop,256,63964.0,0.320,79165.0,3457.3,230045275.0

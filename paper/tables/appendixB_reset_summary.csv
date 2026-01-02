@@ -1,0 +1,4 @@
+mode,N,events,event_fraction,max_avalanche,mean_avalanche_nonzero,total_topples
+reset,64,24089.0,0.120,1056.0,359.3,9068435.0
+reset,128,24089.0,0.120,4160.0,1367.1,34412682.0
+reset,256,23472.0,0.117,16510.0,5498.3,134154191.0
