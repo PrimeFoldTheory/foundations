@@ -224,7 +224,9 @@ def write_latex_table(rows: List[Dict[str, str]], cols: List[str], out_tex: Path
         r"\midrule",
     ]
     for r in rows:
-        lines.append(" & ".join(escape_latex(r.get(c, "")) for c in cols) + r" \\")
+        rr = {c: _fmt_value(c, r.get(c, "")) for c in cols}
+        lines.append(" & ".join(escape_latex(rr.get(c, "")) for c in cols) + r" \\")
+
     lines += [r"\bottomrule", r"\end{tabular}", r"\end{table}", ""]
     out_tex.write_text("\n".join(lines), encoding="utf-8")
 

@@ -13,6 +13,9 @@
 
 \usepackage{graphicx}
 \usepackage{xcolor}
+\usepackage{import}
+\usepackage{booktabs}
+
 
 \usepackage{hyperref}
 \hypersetup{
@@ -31,7 +34,7 @@
 \title{Prime Fold Theory\\[4pt]
 \large Module I -- The Prime Substrate and Foundations of the Fold Ontology}
 \author{Sean Sowden.}
-\date{November 30, 2025}
+\date{2025-2026}
 
 \begin{document}
 \maketitle
@@ -102,6 +105,9 @@ To make the document searchable, I’ll often include the roman names alongside 
     \item Threshold $\kap$ (kappa; local collapse bound),
     \item $r$ (radial distance) and inverse-square scaling $1/r^{2}$ (``r\textasciicircum2'', ``r-squared'') for outward divergence fields.
 \end{itemize}
+\noindent\textbf{Notation note:} Minimal definitions and constraints for the primitive quantities
+(Fold-Time $\bar{\tau}$, Fold-Density $\Phi$, Threshold $\kappa$)---including informal event semantics used in Module~1---are consolidated in Appendix~A for reference.
+
 
 \subsection{Definition of the Prime Substrate}
 % 1.1 content here
@@ -1710,12 +1716,124 @@ Module 2 transforms the Fold Field from an ontological surface into a dynamical
 system capable of producing matter, energy, geometry, and gravity.
 \end{quote}
 
-\section*{Acknowledgments}
+\appendix
+\section*{Appendix}
+\addcontentsline{toc}{section}{Appendix}
+\section{Primitive Definitions and Minimal Constraints}
+\label{app:primitives}
+
+This appendix consolidates the primitive quantities used throughout Module~1.
+These are treated here as \emph{operational bookkeeping variables} of Fold dynamics
+(introduced by the Prime Fold), not as pre-existing spatial fields. Module~2 promotes
+these primitives to explicit dynamical variables and specifies governing equations.
+
+\subsection*{A.1 Primitive quantities}
+
+\paragraph{Fold-Density $\Phi$ (informational content / load).}
+$\Phi$ denotes the local amount of active fold-content present at a node, region, or
+coherent subsystem of the Fold Field. In Module~1, $\Phi$ is interpreted as the
+``how much is present'' variable that determines loading and participation in fold activity.
+\emph{Minimal constraint:} $\Phi \ge 0$.
+
+\paragraph{Fold-Time $\bar{\tau}$ (tension-like accumulation).}
+$\bar{\tau}$ denotes the accumulated structural ``cost'' of continued update/persistence
+at a node/region. In Module~1 it functions as a tension-like accumulator: it grows when
+a configuration continues to update or resist equilibration, and it is the quantity that
+is gated by thresholding into discrete events.
+\emph{Minimal constraint:} $\bar{\tau} \ge 0$.
+
+\paragraph{Threshold $\kappa$ (collapse bound).}
+$\kappa$ denotes the positive bound that gates discrete structural transitions (``fold events'').
+In Module~1, $\kappa$ may be treated as a global constant for conceptual development, or as a
+local bound $\kappa_i$ attached to nodes/regions to allow heterogeneity.
+\emph{Minimal constraint:} $\kappa > 0$ (and likewise $\kappa_i > 0$ when used).
+
+\subsection*{A.2 Informal event semantics (Module 1)}
+Module~1 fixes the qualitative semantics of fold events without committing to a single closed-form
+dynamics. The intended structure is:
+
+\begin{itemize}
+  \item \textbf{Drive / persistence:} $\bar{\tau}$ accumulates under continued activity (or sustained deviation from equilibrium), with the accumulation rate modulated by local loading/structure (encoded conceptually by $\Phi$).
+  \item \textbf{Gating:} a fold event is triggered when accumulated tension becomes comparable to the local bound. Informally, an event occurs when $\bar{\tau}$ crosses a threshold set by $\kappa$ (or $\kappa_i$).
+  \item \textbf{Regulation:} when an event occurs, $\bar{\tau}$ is regulated (reduced, redistributed, or reset) according to rules formalized in Module~2. In the minimal ``reset'' interpretation used for rigorous work, regulation may be modeled as a reset to baseline after collapse.
+\end{itemize}
+
+\subsection*{A.3 Scope and non-commitments (Module 1)}
+To keep Module~1 ontology-first, the following are intentionally left open for Module~2:
+(i) whether $\kappa$ is constant, state-dependent, or learned by dynamics; (ii) the exact form of
+coupling between $\Phi$ and $\bar{\tau}$ in accumulation and transport; (iii) whether evolution is
+strictly conserved or includes dissipation (``leak'') and external drive; and (iv) how local interactions
+generate stable cycles (shells) and long-range skew fields. Module~1 constrains meaning and admissible
+behavior; Module~2 supplies equations and proofs.
+
+% =========================
+% Appendix B — SOC Toy Sim Artifacts
+% =========================
+\section{SOC toy simulation artifacts (Appendix B)}
+\label{app:soc}
+
+\subsection{Purpose and scope}
+This appendix records the computational artifacts for a minimal ``self-organized criticality'' (SOC) toy model
+used as a sanity-check that the Fold primitives---Fold-Time $\bar{\tau}$ (tension accumulator),
+Fold-Density $\Phi$ (informational load), and Threshold $\kappa$ (collapse bound)---can produce
+threshold-driven cascades under simple local rules.
+
+This is not presented as a claim of physical realism. It is strictly an ontological support artifact:
+(i) discrete load accumulation is possible, (ii) thresholding produces punctuated events, and
+(iii) local redistribution can generate multi-scale cascades consistent with SOC-style behavior.
+
+\subsection{Run locations and modes}
+All runs were generated by:
+\begin{center}
+\texttt{code/Module1/appendixBsim.py}
+\end{center}
+
+Outputs are stored as CSV under:
+\begin{itemize}
+  \item \texttt{data/module1/fold\_runs/} \quad (mode=\texttt{drop})
+  \item \texttt{data/module1/truncated\_fold\_runs/} \quad (mode=\texttt{reset})
+\end{itemize}
+
+\paragraph{Mode meanings.}
+\begin{itemize}
+  \item \textbf{Drop mode} (\texttt{drop}): external drive adds load; cascades dissipate by boundary loss.
+  \item \textbf{Reset mode} (\texttt{reset}): collapse enforces a local truncation/reset semantics consistent with
+  the minimal reset rule used elsewhere in this project (reset = baseline after collapse).
+\end{itemize}
+
+\subsection{Provenance and reproducibility}
+Each run CSV includes provenance headers sufficient to reconstruct the exact generating state:
+\texttt{git\_commit}, \texttt{git\_dirty}, \texttt{run\_id}, \texttt{host}.
+This ensures that tables in this appendix are not ``hand-assembled'' summaries but are traceable
+to an exact code snapshot and run identifier.
+
+LibreOffice lock artifacts (\texttt{.\textasciitilde lock.*}) were ignored/removed and are not part of the data record.
+
+\subsection{Reported summary metrics}
+Across runs we summarize the operational SOC observables emitted by the script (e.g.\ total update steps,
+total events/cascades, total topples/relaxations, and any aggregate rates reported by the logger).
+Where relevant, ``event size'' refers to the number of topples/relaxations associated with a single cascade
+triggered by exceeding the Threshold $\kappa$ (collapse bound).
+
+\subsection{Results tables}
+Table~\ref{tab:appB-drop} and Table~\ref{tab:appB-reset} are the canonical summaries for the two modes.
+
+\subsection{Results tables}
+Table~\ref{tab:appB-drop} and Table~\ref{tab:appB-reset} are the canonical summaries for the two modes.
+
+\input{../tables/appendixB_drop_table.tex}
+\input{../tables/appendixB_reset_table.tex}
+
+\subsection{Interpretation (kept intentionally modest)}
+Both modes demonstrate the intended qualitative behavior: load accumulates locally (Fold-Density $\Phi$),
+threshold gating occurs at a bound (Threshold $\kappa$), and collapse produces redistribution cascades that
+can span many updates (a proxy for Fold-Time $\bar{\tau}$ as accumulated tension-like persistence prior to release).
+The point of this appendix is archival: these results anchor the claim that the primitives are sufficient to
+support SOC-like dynamics under minimal assumptions, motivating the fully formal dynamical treatment in Module 2.
+
+
+%\section*{Acknowledgments}
 % your acknowledgments text here
-\section*{AI Acknowledgment}
-Portions of this manuscript were prepared with the assistance of large language model (LLM) tools (ChatGPT, OpenAI) used for copy-editing, clarity improvements, and LaTeX formatting suggestions. All scientific claims, definitions, derivations, and final wording were reviewed and validated by the author, who assumes full responsibility for the content.
-
-
 
 % ---------- References ----------
 \begin{thebibliography}{99}
@@ -1767,6 +1885,10 @@ E.~P.~Verlinde,
 \emph{Journal of High Energy Physics} \textbf{2011} (2011) 29.
 
 \end{thebibliography}
+
+\section*{AI and Tooling Disclosure}
+Portions of this manuscript were prepared with the assistance of large language model (LLM) tools (ChatGPT, OpenAI) used for copy-editing, clarity improvements, and LaTeX formatting suggestions. All scientific claims, definitions, derivations, and final wording were reviewed and validated by the author, who assumes full responsibility for the content.
+
 
 
 \end{document}
