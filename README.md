@@ -37,7 +37,7 @@ top of this deeper ontological ladder.
 
 ## 📖 Modules
 
-### [Module 1 — The Prime Substrate (2025 Ontology Rewrite)](Module1/Module1.pdf)
+### [Module 1 — The Prime Substrate (2025 Ontology Rewrite)](paper/Module1/Module1.pdf)
 
 **Status:** Current canonical foundation (see `module1/`).  
 
