@@ -146,6 +146,12 @@ This is fold-consistent: $J_{ij}$ depends on $m_i$ and $m_j$
 (local state variables), not on spatial coordinates.
 It is also Module~2.2-required: any transport law violating
 this property violates the Anti-Zeno bound.
+The linear form is the minimal (first-order) member of this
+admissible class; higher-order forms (exponential, Lorentzian,
+saturation) satisfy the same Anti-Zeno constraint and are
+expected to produce qualitatively similar shell formation
+behavior, as all share the essential property $g \to 0$ at
+large gradients~\cite{transport_deriv}.
 
 \subsection{Collapse Mechanism}
 
@@ -165,9 +171,18 @@ mechanism: collapse events draw structure inward, fighting
 diffusive spreading.
 
 Physical motivation: a fold collapse is a tension-release event.
-The release draws surrounding structural tension toward the collapse
-site, concentrating mass locally. This is the fold analog of
-gravitational collapse.
+When $\taubar_i$ exceeds $\kappa$, the accumulated fold-time
+represents stored structural tension at node $i$.
+The collapse releases this tension: $\taubar_i$ resets toward zero,
+and the induced inflow from neighboring nodes reflects relaxation
+of local $\taubar$ gradients --- mass flows toward the site of
+tension release, analogous to gravitational collapse along a
+potential gradient.
+The pull fraction $p$ parameterizes the efficiency of this
+tension-to-mass transfer; deriving $p$ from first principles
+(from the $\taubar$ gradient dynamics of Module~2.2) is
+identified as an open problem and does not affect the
+qualitative shell formation result.
 
 %──────────────────────────────────────────────────────────────────────
 \section{Results}
@@ -370,9 +385,10 @@ additional dynamics: the larger source absorbs the smaller whenever
 the smaller source lies within the larger's Hill sphere.
 
 \textbf{Open Problem 2 (Multi-shell hierarchy).}
-\textit{Resolved numerically.}
-On a $40^3$ lattice ($N=64{,}000$ nodes, 80{,}000 steps), fold
-dynamics produce stable nested shell structure satisfying all
+\textit{Resolved numerically (with seeded initial conditions).}
+On a $40^3$ lattice ($N=64{,}000$ nodes, 80{,}000 steps) with
+two-scale initial perturbations (one outer seed, three inner seeds),
+fold dynamics produce stable nested shell structure satisfying all
 four hierarchy criteria:
 \begin{enumerate}
   \item Outer shell stable: ratio $= 3.47 > 1.05$,
@@ -391,6 +407,13 @@ steady, confirming Module~3's central claim: as structure forms
 inside a shell, $B_{\mathrm{interior}}$ depletes relative to
 $B_{\mathrm{boundary}}$, producing the $\Delta B$ differential
 that drives dark energy.
+
+\textit{Note on spontaneity:} the single-shell result (Result~1)
+requires no seed. The multi-shell result uses seeded initial
+conditions to place inner shells at controlled locations.
+Whether multi-shell hierarchy emerges spontaneously from noise
+on a sufficiently large lattice is not yet demonstrated and
+remains an open question for future work.
 
 \textbf{Open Problem 3 (Parameter scaling).}
 \textit{Resolved: plateau is universal.}
