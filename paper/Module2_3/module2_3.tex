@@ -40,7 +40,7 @@ shell-like structures with persistent interior/exterior contrast.
 The key mechanism is collapse-driven concentration: when $\taubar_i$
 exceeds threshold $\kappa$, structural mass is drawn inward from
 neighboring nodes, fighting diffusive spreading. Gradient-dependent
-transport ($J_{ij} \propto 1 - \alpha|\Delta m|/m_{\max}$) prevents
+transport ($J_{ij} \propto m_i/(m_i + |\Delta m|)$, saturation form) prevents
 transport from erasing nascent boundaries.
 Long-run simulation ($5\times10^4$ steps, $L=15$--$40$, 2D and 3D
 lattices, $N=5$ seeds each) confirms exponential approach to a
@@ -131,29 +131,38 @@ bound and eventually exceeds $m_i/t_P$.
 Gradient-dependent transport is the minimal correction restoring
 Anti-Zeno compliance: the coefficient $g$ must satisfy
 $g \to 0$ as $|\Delta m| \to \infty$.
-The linear form is the leading-order term of any compliant closure:
+
+\textbf{Locality constraint (Gemini/Grok audit, April 2026).}
+Pre-geometric locality additionally requires that $J_{ij}$
+depend only on local state variables $(m_i, m_j, \kappa)$ ---
+not on global quantities such as $m_{\max}$ (the maximum
+structural mass on any node in the lattice).
+The canonical locally-compliant closure is the saturation form:
 \begin{equation}
-  J_{ij} = -D(m_j - m_i)\cdot\left(1 - \alpha_J
-  \frac{|m_j - m_i|}{m_{\max}}\right),
+  J_{ij} = -D(m_j - m_i)\cdot\frac{m_i}{m_i + |m_j - m_i|},
   \label{eq:grad_transport}
 \end{equation}
-where $\alpha_J \in [0,1]$ is the gradient damping coefficient.
-At small gradients this reduces to standard diffusion.
-At large gradients --- across a shell boundary --- transport is
-suppressed, protecting the boundary from erasure.
+where $D$ is the diffusion coefficient.
+At small gradients ($|m_j-m_i| \ll m_i$) this reduces to
+standard diffusion. At large gradients it saturates to zero,
+protecting shell boundaries from erasure.
+
+The perturbative $\kappa$-scaled form
+$J_{ij} = -D(m_j-m_i)(1 - \alpha_J|m_j-m_i|/\kappa)$
+is the leading-order expansion with $\kappa$ as the local
+scale and is also locally compliant~\cite{transport_deriv}.
 
 This is fold-consistent: $J_{ij}$ depends on $m_i$ and $m_j$
-(local state variables), not on spatial coordinates.
+(local state variables) and $\kappa$ (fold primitive),
+not on spatial coordinates or global lattice properties.
 It is also Module~2.2-required: any transport law violating
 this property violates the Anti-Zeno bound.
-The linear form is the minimal (first-order) member of this
-admissible class; higher-order forms (exponential, Lorentzian,
-saturation) satisfy the same Anti-Zeno constraint and produce
-the same shell formation result.
-Numerical confirmation on a $20^3$ lattice shows all three
-forms give $C = 1.0198 \pm 0.0002$, with spread $\Delta C = 0.00003$
-across forms --- confirming that the fixed point is a property
-of the admissible class, not of the linear choice~\cite{transport_deriv}.
+Numerical confirmation on a $20^3$ lattice with three
+locally compliant forms (saturation, $\kappa$-scaled,
+local-rational) gives $C = 1.020 \pm 0.002$,
+spread $\Delta C = 0.00110$ --- confirming that the
+fixed point is a property of the locally admissible class,
+not of any specific form~\cite{transport_deriv}.
 
 \subsection{Collapse Mechanism}
 
@@ -465,8 +474,8 @@ structures from noise. Three results are established:
 \textbf{Mechanism:} collapse draws $m$ inward; gradient transport
 protects boundaries (required by Anti-Zeno, \cite{transport_deriv})\\[2pt]
 \textbf{Key equations:}\\[1pt]
-$J_{ij} = -D\Delta m_{ij}\cdot(1-\alpha_J|\Delta m_{ij}|/m_{\max})$
-\hfill (gradient transport, derived)\\[1pt]
+$J_{ij} = -D\Delta m_{ij}\cdot m_i/(m_i+|\Delta m_{ij}|)$
+\hfill (saturation transport, local \& derived)\\[1pt]
 $r^* = d/(1+\sqrt{A_2/A_1})$
 \hfill (Hill sphere, derived)\\[1pt]
 $C = 1.014 \pm 0.003$
