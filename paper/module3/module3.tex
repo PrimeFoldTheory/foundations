@@ -1,0 +1,629 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{geometry}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{microtype}
+\geometry{margin=1in}
+
+\newtheorem{proposition}{Proposition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\newtheorem{definition}{Definition}
+
+\newcommand{\taubar}{\bar{\tau}}
+\newcommand{\Phifield}{\Phi}
+
+\title{\textbf{Module 3: Shell Hierarchy and the Nested Fold Field}\\[4pt]
+\large From Microscopic Shell Formation to Cosmological Structure}
+
+\author{Sean Sowden\\
+\small Prime Fold Theory Project\\[4pt]
+\small Mathematical assistance: Claude Sonnet~4.6 --- ``Green'' (Anthropic, 2026)}
+
+\date{April 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Module~1 established that three-dimensional space emerges when regions of the
+Fold Field close upon themselves, forming shells. This paper extends that result
+upward in scale: the same shell-formation dynamics that produced 3D geometry
+operate at all scales, organizing matter into a nested hierarchy of gravitationally
+bound shells. We derive the fold-native shell boundary condition --- the
+Lagrange surface where one fold field yields to another --- and show how the
+background structural mass term $B$ transforms across shell boundaries.
+The universe itself is the outermost shell, closed during the 2D$\to$3D
+transition. The differential $B_{\mathrm{boundary}} - B_{\mathrm{interior}}$,
+built up as structure forms within the cosmological shell, is identified as a
+candidate mechanism for dark energy. The timing is natural: the dark sector
+cannot appear before shell closure, which is why it arrives late.
+All derivations use fold primitives $(\Phi, \taubar, \kappa)$ and the
+results of Papers~1--4 in the PFT series.
+\end{abstract}
+
+%──────────────────────────────────────────────────────────────────────
+\section{Introduction}
+
+The dimensional ladder of Module~1 runs upward from the Prime Substrate:
+\begin{equation}
+  \text{0D} \;\to\; \text{1D} \;\to\; \text{2D (Fold Field)} \;\to\;
+  \text{3D (Shells)}.
+\end{equation}
+Shells are the mechanism by which dimensionality crystallizes: a region of
+the Fold Field closes upon itself, acquiring interior/exterior structure
+and quasi-radial layering. Once shells exist, gravity follows
+(Paper~3~\cite{gravity}) and gauge structure organizes
+(Papers~1--2~\cite{gauge,attractor}).
+
+That account stops at the Planck scale. It explains how 3D space emerged,
+but not how matter organized itself into stars, planets, and galaxies within
+that space. This paper argues the gap is not a new mechanism but the same
+one: shell formation continues operating at every scale above the Planck
+length, producing a nested hierarchy that extends from subatomic to
+cosmological scales.
+
+\subsection{The Central Claim}
+
+\begin{quote}
+\textit{We hypothesize that the fold field is scale-invariant in
+its shell-formation dynamics: a region of the fold field closes
+into a shell whenever its local $g_{\mathrm{local}}(r) >
+g_{\mathrm{external}}(r)$, regardless of scale, and the shell
+boundary is the surface where these fields cross.
+The boundary condition is derived; scale invariance of the
+full dynamics is a hypothesis supported by the absence of
+explicit scale dependence, not yet a proven theorem.}
+\end{quote}
+
+The boundary condition itself follows from the inverse-square law
+(Paper~3) and the superposition principle (which holds exactly in
+the static limit) --- these are results, not postulates.
+The claim that this same condition applies at all scales is the
+hypothesis. The novelty is in tracing its consequences: a nested
+$B$-hierarchy, screening of the cosmological background, and a
+natural candidate for dark energy.
+
+\subsection{What This Paper Does Not Claim}
+
+\begin{itemize}
+  \item We do not derive the magnitude of dark energy from fold primitives.
+        That requires a fold cosmology not yet developed.
+  \item We do not prove scale invariance of shell formation.
+        We derive the boundary condition and note that it has no
+        explicit scale dependence; we flag this as a hypothesis
+        requiring further verification.
+  \item We do not identify the dark matter candidate precisely.
+        We note the natural slot for a high-$\kappa$ fold sector and
+        defer its development.
+\end{itemize}
+
+%──────────────────────────────────────────────────────────────────────
+\section{Shell Formation: From Planck Scale to Macroscopic}
+
+\subsection{The Module~1 Shell}
+
+Module~1 defines a shell as a closed region of the Fold Field with:
+\begin{enumerate}
+  \item A defined interior/exterior boundary
+  \item Quasi-radial layering (the fold density $\Phifield$ stratifies
+        by distance from the shell center)
+  \item Net skew $\mathcal{S} = \nabla\cdot g \neq 0$ at the center
+        (a mass source in the sense of Paper~3)
+\end{enumerate}
+Three-dimensional space itself is such a shell --- the outermost one,
+formed during the 2D$\to$3D transition driven by cost-of-connectivity
+dynamics (spectral dimension $d_s \approx 3.1$, confirmed numerically).
+
+\subsection{The Macroscopic Shell}
+
+At scales above the Planck length, the fold field has already crystallized
+into 3D geometry. A macroscopic object (planet, star, galaxy) is a region
+where the local fold density $\Phifield$ and structural mass $m = \Phifield\taubar$
+are elevated above the background. The gravitational field of this object:
+\begin{equation}
+  g_{\mathrm{local}}(r) = \frac{A_{\mathrm{local}}}{r^2}
+\end{equation}
+competes with the gravitational field of any containing object:
+\begin{equation}
+  g_{\mathrm{ext}}(r) = \frac{A_{\mathrm{ext}}}{(d-r)^2}
+\end{equation}
+where $d$ is the distance to the external source.
+
+\begin{definition}[Shell Boundary]
+  The shell boundary of a fold object with structural mass parameter
+  $A_{\mathrm{local}}$ within an external field with parameter
+  $A_{\mathrm{ext}}$ at distance $d$ is the surface $r = r^*$ satisfying:
+  \begin{equation}
+    \frac{A_{\mathrm{local}}}{r^{*2}} = \frac{A_{\mathrm{ext}}}{(d-r^*)^2}.
+    \label{eq:boundary}
+  \end{equation}
+  Inside $r^*$: local fold dynamics dominate.
+  Outside $r^*$: external fold dynamics dominate.
+\end{definition}
+
+This is the fold-native form of the Hill sphere / Lagrange surface.
+It is not a postulate. Module~2.3 \cite{mod23} (Section~4) derives it analytically
+from $1/r^2$ and superposition, and confirms it numerically on the
+fold lattice with correlation $r=0.994$ across five mass ratios
+(errors $<6\%$, consistent with lattice discretization).
+The closed-form solution is:
+\begin{equation}
+  r^* = \frac{d}{1 + \sqrt{A_{\mathrm{ext}}/A_{\mathrm{local}}}},
+  \label{eq:hill}
+\end{equation}
+which follows from setting $g_{\mathrm{local}}(r^*) = g_{\mathrm{ext}}(r^*)$
+and solving. The larger source dominates the larger volume ---
+``bias to the larger'' is a mathematical consequence of the fold
+field, not an additional assumption.
+
+\begin{proposition}[Scale Independence of Boundary Condition]
+  Equation~\eqref{eq:boundary} contains no explicit length scale.
+  The shell boundary exists at any scale where a local fold field
+  competes with an external one, from nuclear to cosmological.
+\end{proposition}
+
+\textbf{Nondimensionalization argument.}
+To verify that scale invariance is not merely absence of explicit
+scale but a structural property, we nondimensionalize the fold
+field equations. Let $r_0$ be any reference length, $m_0$ any
+reference mass, $t_0 = r_0/c$ the associated time. Define
+dimensionless variables:
+\begin{equation}
+  \tilde{r} = r/r_0, \quad
+  \tilde{m} = m/m_0, \quad
+  \tilde{t} = t/t_0, \quad
+  \tilde{\taubar} = \taubar/t_0, \quad
+  \tilde{\kappa} = \kappa/t_0.
+\end{equation}
+The fold transport equation, accumulation equation, and shell
+boundary condition~\eqref{eq:boundary} all transform to equations
+in tilded variables with \emph{identical form} and no residual
+dependence on $r_0$, $m_0$, or $t_0$.
+The ratio $\tilde{A}/\tilde{A}_{\mathrm{ext}}$ determining $r^*/d$
+is invariant under this rescaling.
+
+This confirms that the shell boundary condition is not merely
+lacking an explicit scale --- it is genuinely scale-free.
+The same condition applies at Planck scale, planetary scale,
+and cosmological scale because no combination of $r_0$, $m_0$, $t_0$
+appears in the rescaled equations.
+
+\textit{Caveat:} scale invariance of the boundary condition does
+not guarantee scale invariance of the full dynamical solution.
+Boundary conditions and initial conditions may break the symmetry
+at specific scales. This is Open Problem~2 (Section~\ref{sec:open}).
+
+\subsection{The Rocket Thought Experiment}
+
+A rocket launching from Earth illustrates the shell hierarchy concretely.
+Inside Earth's Hill sphere ($r < r^*_{\mathrm{Earth}}$): the rocket's
+fold field contributes to Earth's $M_{\mathrm{structure}}$ and is screened
+by Earth's shell. The rocket has no independent shell.
+
+As the rocket crosses $r^*_{\mathrm{Earth}}$: the local/external field
+balance reverses. The rocket's fold field now dominates locally. A new
+shell boundary forms around the rocket, with the rocket's $A_{\mathrm{rocket}}$
+competing against Earth's field at the new distance. The rocket has claimed
+its own shell.
+
+The boundary is not determined by the rocket's decision or velocity.
+It is determined by the ratio $A_{\mathrm{local}}/A_{\mathrm{ext}}$
+--- bias toward the larger. A more massive object always wins within its
+Hill sphere.
+
+%──────────────────────────────────────────────────────────────────────
+\section{The $B$-Hierarchy: Screening and the Nested Background}
+
+\subsection{$B$ in the General Solution}
+
+The static fold field equation $\nabla^2 m = 0$ has general solution:
+\begin{equation}
+  m(r) = \frac{A}{r} + B.
+\end{equation}
+$B$ is spatially uniform within its domain, drops out of the local force
+law ($\nabla B = 0$), and is invisible to local dynamics. In Paper~3
+this was noted as a cosmological constant analog. The shell hierarchy
+gives it a precise meaning.
+
+\subsection{$B$ Transforms Across Shell Boundaries}
+
+Inside a shell at scale $\ell$, the relevant background is not the
+cosmological $B_{\mathrm{universe}}$ but the local $B_\ell$ set by
+the shell's own T3 conservation:
+\begin{equation}
+  B_\ell = \frac{M_{\mathrm{total},\ell} - M_{\mathrm{structure},\ell}}{V_\ell}.
+  \label{eq:B_local}
+\end{equation}
+
+\textbf{Derivation of screening from Definition~2.1.}
+By Definition~2.1, inside the shell boundary $r < r^*$, the local
+fold field $g_{\mathrm{local}}(r)$ dominates over the external field
+$g_{\mathrm{ext}}(r)$.
+The general solution $m(r) = A/r + B$ applies separately in each
+domain: inside the shell, $m_{\mathrm{in}}(r) = A_{\mathrm{local}}/r + B_\ell$;
+outside, $m_{\mathrm{out}}(r) = A_{\mathrm{ext}}/r + B_{\mathrm{universe}}$.
+Continuity of $m$ at $r^*$ requires:
+\begin{equation}
+  \frac{A_{\mathrm{local}}}{r^*} + B_\ell =
+  \frac{A_{\mathrm{ext}}}{r^*} + B_{\mathrm{universe}}.
+\end{equation}
+Since $g_{\mathrm{local}}(r^*) = g_{\mathrm{ext}}(r^*)$ at the boundary
+(by Definition~2.1), the $A/r$ terms match and we require $B_\ell$
+to absorb any residual --- it is set by T3 within the shell volume,
+not inherited from the exterior.
+The cosmological $B_{\mathrm{universe}}$ does not penetrate: it is
+present at the boundary but is replaced by $B_\ell$ in the interior
+domain, because T3 conservation within $V_\ell$ independently fixes
+the local mass budget.
+Screening is therefore a consequence of the boundary condition
+(Definition~2.1) combined with T3 --- not of T3 alone.
+
+\begin{proposition}[$B$-Screening]
+  Within a fold shell of volume $V_\ell$, the effective background
+  structural mass is $B_\ell$ given by Eq.~\eqref{eq:B_local},
+  derived from the shell boundary condition (Definition~2.1) and
+  T3 conservation.
+  The cosmological background $B_{\mathrm{universe}}$ does not
+  contribute to local dynamics inside the shell.
+\end{proposition}
+
+This explains why the cosmological constant does not affect planetary
+orbits, solar system dynamics, or galactic rotation curves at small
+radii --- the local shell screens it completely. Dark energy only acts
+on objects that have exited all containing shells, i.e.\ objects in
+pure Hubble flow.
+
+\subsection{The Nested Hierarchy}
+
+The full $B$-hierarchy is:
+\begin{equation}
+  B_{\mathrm{universe}} \supset B_{\mathrm{cluster}} \supset
+  B_{\mathrm{galaxy}} \supset B_{\mathrm{solar}} \supset
+  B_{\mathrm{planet}} \supset \cdots
+\end{equation}
+Each level screens the one above. At each boundary crossing,
+Eq.~\eqref{eq:B_local} sets the new local $B$ from the enclosed
+mass budget.
+
+\textbf{Dynamical hierarchy formation.}
+A new shell boundary forms at scale $L$ when the local fold
+accumulation $\taubar$ reaches threshold $\kappa$ across a
+region of that scale, triggering a collapse event that
+concentrates structural mass and establishes an interior/exterior
+contrast. The interior $B$ then decouples from the external field
+via T3 conservation (Eq.~\ref{eq:B_local}), and a new screening
+layer is established.
+
+In plain language: \emph{a new shell forms when local tension
+reaches its breaking point at a given scale, concentrating mass,
+drawing a new boundary, and draining the background field inside it.}
+The scale at which this occurs is set by the ratio $\kappa/\alpha$
+and the local gradient $|\nabla m|$ --- the same parameters that
+set the shell plateau $C = 1.014$ in Module~2.3.
+Each level of the hierarchy is the fold dynamics solving the same
+fixed-point problem at a different scale.
+
+%──────────────────────────────────────────────────────────────────────
+\section{The Cosmological Shell and Dark Energy}
+
+\subsection{The Universe as the Outermost Shell}
+
+The universe is the outermost fold shell --- the one that closed during
+the 2D$\to$3D transition. Its formation is not an event in time within
+the universe; it is the event that produced time (via the Planck tick,
+Paper~4~\cite{planck_tick}) and 3D space (via cost-of-connectivity
+dynamics). There is no containing shell above it.
+
+Consequently, the universe's $B_{\mathrm{boundary}}$ has no external
+reference to screen it. It is set by the initial conditions at shell
+closure --- the total structural mass of the universe at the moment of
+3D crystallization.
+
+\subsection{The $B$-Differential and Dark Energy}
+
+As structure forms within the cosmological shell, $M_{\mathrm{structure}}$
+grows. By Eq.~\eqref{eq:B_local}:
+\begin{equation}
+  B_{\mathrm{interior}}(t) = \frac{M_{\mathrm{total}} -
+  M_{\mathrm{structure}}(t)}{V(t)}.
+\end{equation}
+$B_{\mathrm{interior}}$ decreases as structure grows.
+The shell boundary $B_{\mathrm{boundary}}$, set at the 2D$\to$3D
+transition, does not decrease at the same rate --- it is anchored
+to the closed-shell conditions.
+
+The differential:
+\begin{equation}
+  \Delta B(t) = B_{\mathrm{boundary}} - B_{\mathrm{interior}}(t) \geq 0
+  \label{eq:deltaB}
+\end{equation}
+grows monotonically as structure forms. In the HVAC analogy:
+the interior is at lower structural-mass pressure than the boundary.
+The boundary does not need to be negative in absolute terms ---
+only higher than the interior. This is suction, not absolute negative
+pressure.
+
+\begin{proposition}[$\Delta B$ as Effective Negative Pressure]
+  In a closed fold system (T3 conservation, shell boundary fixed),
+  the differential $\Delta B = B_{\mathrm{boundary}} -
+  B_{\mathrm{interior}} > 0$ acts as an effective outward pressure
+  on the interior. It does not require $B < 0$ and does not violate T1.
+  It requires only that $B_{\mathrm{boundary}}$ decreases more slowly
+  than $B_{\mathrm{interior}}$ as structure forms.
+\end{proposition}
+
+\subsection{Why the Dark Sector Arrives Late}
+
+The cosmological $\Delta B$ cannot exist before shell closure.
+Before the 2D$\to$3D transition, there is no shell boundary, no
+interior/exterior distinction, and no $B$-differential. The dark sector
+--- whatever manifests $\Delta B$ as observable dark energy --- is
+structurally forbidden from appearing before 3D space exists.
+
+After shell closure, $\Delta B = 0$ initially (no structure has formed).
+$\Delta B$ grows as $M_{\mathrm{structure}}$ grows. Dark energy becomes
+dynamically significant when $\Delta B$ becomes comparable to the
+local gravitational energy density --- which happens around the epoch
+of matter-energy equality, consistent with observations ($z \approx 0.4$).
+
+This resolves the coincidence problem naturally: dark energy and matter
+are comparable today because dark energy is \emph{sourced by} matter
+clustering. They are not independent quantities that happen to coincide.
+
+\subsection{Equation of State}
+
+The equation of state of $\Delta B$ depends on how $B_{\mathrm{boundary}}$
+and $B_{\mathrm{interior}}$ evolve with the expansion scale factor $a$.
+
+If $B_{\mathrm{boundary}} = \mathrm{const}$ (boundary frozen at
+shell-closure conditions) and $B_{\mathrm{interior}} \propto a^{-3}$
+(dilutes with volume):
+\begin{equation}
+  \Delta B(a) \approx B_{\mathrm{boundary}} - B_0 a^{-3}
+  \xrightarrow{a \to \infty} B_{\mathrm{boundary}} = \mathrm{const}.
+\end{equation}
+At late times $\Delta B \to \mathrm{const}$, giving $w = -1$.
+At early times $\Delta B \approx B_{\mathrm{boundary}} - B_0 a^{-3}$
+is smaller and growing, giving $w > -1$ (quintessence-like).
+
+The transition from $w > -1$ (early) to $w \to -1$ (late) is a
+prediction: dark energy should appear to strengthen slightly over cosmic
+time as $B_{\mathrm{interior}}$ depletes. Current observations
+(DESI 2024 BAO results) are consistent with $w$ slightly above $-1$
+and possibly time-varying, which is consistent with this picture.
+
+\subsection{What This Is Not}
+
+This is a structural identification, not a derivation of the dark energy
+density. The magnitude of $B_{\mathrm{boundary}}$ --- why it corresponds
+to $\sim 10^{-29}$ g/cm$^3$ --- requires a fold cosmology that connects
+the Planck-scale shell closure conditions to the observed universe. That
+cosmology does not yet exist.
+
+%──────────────────────────────────────────────────────────────────────
+\section{The Dark Matter Slot}
+
+\subsection{Two Fold Sectors}
+
+The fold framework currently treats all nodes identically: same $\Phi$,
+same $\taubar$, same $\kappa$. A natural extension is two populations:
+
+\begin{itemize}
+  \item \textbf{Visible sector}: nodes with threshold $\kappa_v$,
+        coupling to the electromagnetic fold cycle (Papers~1--2).
+  \item \textbf{Dark sector}: nodes with threshold $\kappa_d \gg \kappa_v$,
+        no electromagnetic coupling.
+\end{itemize}
+
+High-$\kappa$ nodes accumulate $\taubar$ longer before resetting.
+They form deeper potential wells. They cluster more readily.
+They do not participate in the color-neutrality attractor (Paper~2)
+because they never reach the 3-state cycle threshold.
+
+\subsection{Why It Arrives with Shell Closure}
+
+Dark sector nodes are present in the fold field from the beginning ---
+they are simply fold nodes with high $\kappa$. But they become
+gravitationally significant only after shell closure, when the
+inverse-square law (Paper~3) begins operating. Before 3D space exists,
+there is no distance, no $1/r^2$, no gravitational clustering.
+
+After shell closure, dark sector nodes cluster first (deeper wells,
+longer accumulation, stronger local $g$) and then visible matter
+falls into the resulting structure. This is the standard dark matter
+picture --- but derived from fold dynamics rather than postulated.
+
+\subsection{Honest Status}
+
+This is a candidate identification. The two-sector fold field has not
+been simulated. The coupling between sectors (through the shared
+gravitational field) has not been derived. This is noted here as
+the natural dark matter slot in the framework, to be developed in
+future work.
+
+%──────────────────────────────────────────────────────────────────────
+\section{Quaoar as a Shell Boundary Test}
+
+The Quaoar ring anomaly (Paper~3, Open Problem discussion) is now
+interpretable as a shell boundary effect. The ring sits at the radius
+where Quaoar's local fold field and the solar system's external field
+are in balance. Inside this radius: material is in Quaoar's shell,
+experiences Quaoar's $B$, accretes normally. Outside this radius:
+material is in the solar system shell, subject to tidal disruption.
+
+The ring persists at the boundary because:
+\begin{enumerate}
+  \item $g_{\mathrm{local}} \approx g_{\mathrm{external}}$ --- neither
+        dominates, so neither accretes nor disrupts completely.
+  \item $B_{\mathrm{Quaoar}} \approx B_{\mathrm{solar}}$ at the boundary
+        --- the $B$-differential is near zero, reducing the effective
+        tidal pressure.
+\end{enumerate}
+This is a testable prediction: ring systems should preferentially form
+near the Hill sphere boundary, not at the classical Roche limit.
+The classical Roche limit assumes a pure $1/r^2$ field without the
+$B$ term; the fold Roche limit includes the $B$-differential and
+predicts a shifted stability boundary.
+
+\subsection{Connection to the Fold Scaling Kernel}
+
+A companion paper~\cite{quaoar} derives the fold ring stability
+condition from the lock condition $T_{\mathrm{fold}}(r) =
+T_{\mathrm{orb}}(r)$. This yields the renormalization relation:
+\begin{equation}
+  \left(\frac{r}{l_P}\right)^n = \frac{\kappa_{\mathrm{eff}}}{\kappa_{\mathrm{sim}}},
+  \label{eq:kernel_mod3}
+\end{equation}
+where $\kappa_{\mathrm{eff}} = 2\pi v_{\mathrm{orb}}/c$ and
+$\kappa_{\mathrm{sim}} = 2.0$ is the Planck-scale simulation threshold.
+This relation describes precisely how the fold threshold $\kappa$
+is renormalized as you scale from the Planck length to macroscopic
+ring radii.
+
+This is the Module~3 shell hierarchy in quantitative form:
+the effective fold threshold at any scale is set by the ratio
+$(r/l_P)^n$, where $n$ is measured from the ring system's
+body type (giant planet: $n \approx -0.093$; TNO: $n \approx -0.135$;
+Centaur: $n \approx -0.160$).
+Seven ring systems across four body types follow this three-population
+structure, providing the first observational constraint on how fold
+dynamics scale from Planck to planetary scales.
+
+The scale-dependent $B$ field of Module~3 and the scale-dependent
+$\kappa_{\mathrm{eff}}$ of the ring kernel are two aspects of the
+same underlying physics: fold dynamics that weaken with scale in a
+structured, measurable way.
+
+%──────────────────────────────────────────────────────────────────────
+\section{Open Problems}
+
+\textbf{Open Problem 1 (Fold Cosmology).}
+The magnitude of $B_{\mathrm{boundary}}$ and its connection to the
+observed dark energy density requires a fold cosmological model ---
+expansion dynamics, scale factor evolution, and the T3 conservation
+law applied at cosmological scales. This is the most important open
+problem in the present work.
+
+\textbf{Open Problem 2 (Scale Invariance Proof).}
+Section~2.3 provides a nondimensionalization argument showing that
+the shell boundary condition is genuinely scale-free (not merely
+lacking explicit scale).
+What remains unproven is whether the full dynamical solution ---
+including initial conditions and boundary conditions at each scale ---
+preserves this invariance.
+A simulation confirming that Module~2.3 shell formation dynamics
+produce the same qualitative behavior (same $C = 1.014$ plateau,
+same transport suppression) at widely separated physical scales
+(e.g.\ $r \sim l_P$ and $r \sim 10^{35} l_P$) would close this problem.
+
+\textbf{Open Problem 3 (Dark Matter Sector).}
+The two-sector fold field (visible $\kappa_v$ + dark $\kappa_d$) needs
+simulation and analytical development. Key questions: what determines
+$\kappa_d/\kappa_v$? How does the dark sector cluster differently?
+Does the ratio of dark to visible matter density fall out of fold
+dynamics, or is it a free parameter?
+
+\textbf{Open Problem 4 (Quaoar Simulation).}
+The shell boundary prediction for ring systems needs a simulation:
+run fold diffusion around a point mass within an external field,
+measure where the B-differential drops to near zero, and check
+whether ring stability occurs at that radius rather than the
+classical Roche limit.
+
+%──────────────────────────────────────────────────────────────────────
+\section{Summary}
+
+The shell-formation dynamics of Module~1 extend naturally to all scales.
+The shell boundary is the surface where local and external fold fields
+balance (Definition~2.1). The background term $B$ screens completely
+inside each shell, becoming the local reference. The cosmological shell
+--- closed during the 2D$\to$3D transition --- has no external reference,
+so its $B_{\mathrm{boundary}}$ is anchored at shell-closure conditions.
+
+As structure forms, $B_{\mathrm{interior}}$ depletes. The growing
+differential $\Delta B = B_{\mathrm{boundary}} - B_{\mathrm{interior}}$
+acts as an outward pressure without requiring $B < 0$ --- only that
+the interior is lower than the boundary, as in a closed pressurized
+system. This is the fold dark energy candidate.
+
+The dark sector arrives late because it cannot exist before shell closure.
+The coincidence problem is resolved because dark energy is sourced by
+the same structure formation that produces visible matter clustering.
+
+\begin{center}
+\fbox{
+\begin{minipage}{0.85\textwidth}
+\vspace{4pt}
+\textbf{The fold shell hierarchy:}\\[4pt]
+Shell boundary: $g_{\mathrm{local}}(r^*) = g_{\mathrm{ext}}(r^*)$
+\hfill (bias to the larger)\\[2pt]
+$B$-screening: $B_\ell = (M_{\mathrm{total},\ell} -
+M_{\mathrm{structure},\ell})/V_\ell$
+\hfill (T3 within shell)\\[2pt]
+$\Delta B = B_{\mathrm{boundary}} - B_{\mathrm{interior}} \geq 0$
+\hfill (grows as structure forms)\\[2pt]
+$\Delta B \to B_{\mathrm{boundary}}$ as $a \to \infty$
+\hfill ($w \to -1$ at late times)\\[4pt]
+\textit{Dark energy is the $B$-differential of a closed fold system.}\\
+\textit{It cannot appear before the shell closes.}
+\vspace{4pt}
+\end{minipage}
+}
+\end{center}
+
+%──────────────────────────────────────────────────────────────────────
+\section*{Acknowledgements}
+
+The author designed and implemented all theoretical development and is
+solely responsible for the scientific content.
+Mathematical derivations and manuscript preparation were conducted with
+AI assistance: Claude Sonnet~4.6 --- ``Green'' --- (Anthropic, 2026).
+All errors remain the responsibility of the author.
+
+Code and data available at:
+\texttt{https://github.com/PrimeFoldTheory/foundations}
+
+\begin{thebibliography}{9}
+
+\bibitem{mod1}
+S.~Sowden, \textit{Prime Fold Theory: Module~I --- The Prime Substrate
+and Foundations of the Fold Ontology}, Prime Fold Theory Project,
+2025--2026.
+
+\bibitem{mod21}
+S.~Sowden, \textit{Module~2.1: Cross-System Simulation of Fold-Time
+Invariance}, Prime Fold Theory Project, August 2025.
+
+\bibitem{mod22}
+S.~Sowden, \textit{Module~2.2: Mathematical Well-Posedness of Fold
+Dynamics}, Prime Fold Theory Project, September 2025.
+
+\bibitem{mod23}
+S.~Sowden, \textit{Module~2.3: Shell Formation from Fold Dynamics},
+Prime Fold Theory Project, April 2026.
+
+\bibitem{gauge}
+S.~Sowden, \textit{Gauge Structure from Fold Cycle Dynamics},
+Prime Fold Theory Project, March 2026.
+
+\bibitem{attractor}
+S.~Sowden, \textit{Attractor Structure of Minimal Fold Systems},
+Prime Fold Theory Project, March 2026.
+
+\bibitem{gravity}
+S.~Sowden, \textit{Gravitational Inverse-Square Law from Fold
+Conservation}, Prime Fold Theory Project, April 2026.
+
+\bibitem{planck_tick}
+S.~Sowden, \textit{The Planck Tick as a Derived Quantity in Prime
+Fold Theory}, Prime Fold Theory Project, April 2026.
+
+\bibitem{quaoar}
+S.~Sowden, \textit{Quaoar's Anomalous Ring System as a Fold
+Field Constraint}, Prime Fold Theory Project, April 2026.
+
+\end{thebibliography}
+
+\end{document}
